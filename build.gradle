@@ -1,0 +1,42 @@
+plugins {
+    id 'org.springframework.boot' version '2.5.7'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-actuator:2.5.6'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.5.6'
+    implementation 'org.springframework.boot:spring-boot-starter-jooq:2.5.6'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux:2.5.6'
+    implementation 'org.projectlombok:lombok:1.18.22'
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools:2.5.6'
+    runtimeOnly 'com.h2database:h2:1.4.200'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.6'
+    testImplementation 'io.projectreactor:reactor-test:3.4.12'
+
+    // import BOM
+    implementation platform('io.projectreactor:reactor-bom:2020.0.13')
+    // add dependencies without a version number
+    implementation 'io.projectreactor:reactor-core:3.4.12'
+}
+
+test {
+    useJUnitPlatform()
+}
